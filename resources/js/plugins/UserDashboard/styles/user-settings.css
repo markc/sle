@@ -1,0 +1,71 @@
+/**
+ * UserSettings Styles
+ */
+
+.user-settings {
+  padding: 20px;
+}
+
+.settings-section {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  margin-bottom: 30px;
+}
+
+.settings-section h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.setting-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.setting-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.setting-item label {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.setting-item input[type="checkbox"] {
+  margin-right: 10px;
+  width: 18px;
+  height: 18px;
+}
+
+.setting-description {
+  margin: 0;
+  padding-left: 28px;
+  color: #666;
+  font-size: 14px;
+}
+
+.save-settings-btn {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.save-settings-btn:hover {
+  background-color: #2980b9;
+}
