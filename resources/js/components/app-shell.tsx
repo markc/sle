@@ -7,13 +7,22 @@ interface AppShellProps {
 }
 
 export function AppShell({ children, variant = 'header' }: AppShellProps) {
-    const [isOpen, setIsOpen] = useState(() => (typeof window !== 'undefined' ? localStorage.getItem('sidebar') !== 'false' : true));
+    const [isLeftOpen, setIsLeftOpen] = useState(() => (typeof window !== 'undefined' ? localStorage.getItem('sidebar_left') !== 'false' : true));
+    const [isRightOpen, setIsRightOpen] = useState(() => (typeof window !== 'undefined' ? localStorage.getItem('sidebar_right') !== 'false' : true));
 
-    const handleSidebarChange = (open: boolean) => {
-        setIsOpen(open);
+    const handleLeftSidebarChange = (open: boolean) => {
+        setIsLeftOpen(open);
 
         if (typeof window !== 'undefined') {
-            localStorage.setItem('sidebar', String(open));
+            localStorage.setItem('sidebar_left', String(open));
+        }
+    };
+
+    const handleRightSidebarChange = (open: boolean) => {
+        setIsRightOpen(open);
+
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('sidebar_right', String(open));
         }
     };
 
@@ -22,7 +31,13 @@ export function AppShell({ children, variant = 'header' }: AppShellProps) {
     }
 
     return (
-        <SidebarProvider defaultOpen={isOpen} open={isOpen} onOpenChange={handleSidebarChange}>
+        <SidebarProvider 
+            defaultOpen={isLeftOpen} 
+            open={isLeftOpen} 
+            onOpenChange={handleLeftSidebarChange}
+            rightSidebarOpen={isRightOpen}
+            onRightSidebarOpenChange={handleRightSidebarChange}
+        >
             {children}
         </SidebarProvider>
     );
