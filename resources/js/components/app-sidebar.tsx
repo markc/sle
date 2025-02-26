@@ -33,9 +33,13 @@ const footerNavItems: NavItem[] = [
     },
 ];
 
-export function AppSidebar() {
+interface AppSidebarProps {
+    side?: 'left' | 'right';
+}
+
+export function AppSidebar({ side = 'left' }: AppSidebarProps) {
     return (
-        <Sidebar collapsible="icon" variant="inset">
+        <Sidebar collapsible="icon" variant="inset" side={side}>
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>
