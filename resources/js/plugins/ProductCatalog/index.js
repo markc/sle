@@ -22,6 +22,7 @@ export default {
     ProductCategories,
   },
   // Plugin initialization function
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   initialize: (app) => {
     console.log('ProductCatalog plugin initialized');
     // Any initialization logic goes here

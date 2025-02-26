@@ -20,6 +20,7 @@ export default {
     UserProfile,
   },
   // Plugin initialization function
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   initialize: (app) => {
     console.log('UserDashboard plugin initialized');
     // Any initialization logic goes here
