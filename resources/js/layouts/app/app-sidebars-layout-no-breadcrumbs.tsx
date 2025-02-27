@@ -7,15 +7,17 @@ import { type BreadcrumbItem } from '@/types';
 export default function AppSidebarsLayoutNoBreadcrumbs({ children }: { children: React.ReactNode; breadcrumbs?: BreadcrumbItem[] }) {
     return (
         <AppShell variant="sidebars">
-            <AppSidebar side="left" />
-            <AppContent variant="sidebars">
-                <div className="flex justify-between">
-                    <AppSidebarHeader side="left" />
-                    <AppSidebarHeader side="right" />
-                </div>
-                {children}
-            </AppContent>
-            <AppSidebar side="right" />
+            <div className="fixed flex justify-between w-full bg-tertiary z-10">
+                <AppSidebarHeader side="left" />
+                <AppSidebarHeader side="right" />
+            </div>
+            <div className="flex flex-1 w-full">
+                <AppSidebar side="left" />
+                <AppContent variant="sidebars">
+                    {children}
+                </AppContent>
+                <AppSidebar side="right" />
+            </div>
         </AppShell>
     );
 }

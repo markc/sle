@@ -38,7 +38,9 @@ export function AppShell({ children, variant = 'header' }: AppShellProps) {
             rightSidebarOpen={isRightOpen}
             onRightSidebarOpenChange={handleRightSidebarChange}
         >
-            {children}
+            <div className="flex min-h-screen w-full flex-col">
+                {children}
+            </div>
         </SidebarProvider>
     );
 }

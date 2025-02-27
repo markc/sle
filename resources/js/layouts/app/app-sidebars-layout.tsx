@@ -8,16 +8,18 @@ import { Breadcrumbs } from '@/components/breadcrumbs';
 export default function AppSidebarsLayout({ children, breadcrumbs = [] }: { children: React.ReactNode; breadcrumbs?: BreadcrumbItem[] }) {
     return (
         <AppShell variant="sidebars">
-            <AppSidebar side="left" />
-            <AppContent variant="sidebars">
-                <div className="flex justify-between">
-                    <AppSidebarHeader side="left" />
-                    <AppSidebarHeader side="right" />
-                </div>
-                <Breadcrumbs breadcrumbs={breadcrumbs} />
-                {children}
-            </AppContent>
-            <AppSidebar side="right" />
+            <div className="flex justify-between w-full bg-background z-10 border-b border-sidebar-border/50">
+                <AppSidebarHeader side="left" />
+                <AppSidebarHeader side="right" />
+            </div>
+            <div className="flex flex-1 w-full">
+                <AppSidebar side="left" />
+                <AppContent variant="sidebars">
+                    <Breadcrumbs breadcrumbs={breadcrumbs} />
+                    {children}
+                </AppContent>
+                <AppSidebar side="right" />
+            </div>
         </AppShell>
     );
 }
