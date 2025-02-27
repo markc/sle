@@ -7,19 +7,40 @@
 import React, { useState } from 'react';
 import productStore from '../store';
 import { Link } from '@inertiajs/react';
+import { Breadcrumbs } from '@/components/breadcrumbs';
+import { type BreadcrumbItem } from '@/types';
 
-const ProductList = () => {
+interface ProductListProps {
+  breadcrumbs?: BreadcrumbItem[];
+}
+
+const ProductList: React.FC<ProductListProps> = ({ breadcrumbs = [] }) => {
   const [sortBy, setSortBy] = useState('name');
   const [filterCategory, setFilterCategory] = useState('all');
   
+  // Define types for products and categories
+  interface Product {
+    id: string | number;
+    name: string;
+    price: number;
+    category: string;
+    categoryName: string;
+    image: string;
+  }
+
+  interface Category {
+    id: string;
+    name: string;
+  }
+
   // Get products from store
-  const products = productStore.getState().products;
-  const categories = productStore.getState().categories;
+  const products = productStore.getState().products as Product[];
+  const categories = productStore.getState().categories as Category[];
   
   // Filter and sort products
   const filteredProducts = products
-    .filter(product => filterCategory === 'all' || product.category === filterCategory)
-    .sort((a, b) => {
+    .filter((product: Product) => filterCategory === 'all' || product.category === filterCategory)
+    .sort((a: Product, b: Product) => {
       if (sortBy === 'name') {
         return a.name.localeCompare(b.name);
       } else if (sortBy === 'price-low') {
@@ -32,8 +53,11 @@ const ProductList = () => {
 
   return (
     <div className="p-5">
-      <div className="flex justify-end">
-        <h1 className="text-2xl font-bold mb-6">Product Catalog</h1>
+      <div className="flex justify-between items-center mb-6">
+        <div className="flex-1">
+          <Breadcrumbs breadcrumbs={breadcrumbs} />
+        </div>
+        <h1 className="text-2xl font-bold">Product Catalog</h1>
       </div>
       
       <div className="flex flex-wrap gap-5 mb-8 p-4 bg-gray-50 dark:bg-[oklch(0.205_0_0)] rounded-lg">
@@ -45,7 +69,7 @@ const ProductList = () => {
             onChange={(e) => setFilterCategory(e.target.value)}
           >
             <option value="all">All Categories</option>
-            {categories.map(category => (
+            {categories.map((category: Category) => (
               <option key={category.id} value={category.id}>
                 {category.name}
               </option>
@@ -68,7 +92,7 @@ const ProductList = () => {
       </div>
       
       <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6">
-        {filteredProducts.map(product => (
+        {filteredProducts.map((product: Product) => (
           <div key={product.id} className="bg-white dark:bg-[oklch(0.205_0_0)] rounded-lg shadow-sm dark:shadow-md overflow-hidden transition-all hover:translate-y-[-5px] hover:shadow-md">
             <div className="h-[200px] overflow-hidden">
               <img 

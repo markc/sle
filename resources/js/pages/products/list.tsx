@@ -1,4 +1,4 @@
-import AppLayout from '@/layouts/app-layout';
+import AppLayoutNoBreadcrumbs from '@/layouts/app-layout-no-breadcrumbs';
 import { type BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/react';
 import ProductList from '@/plugins/ProductCatalog/components/ProductList';
@@ -16,11 +16,11 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 export default function ProductListPage() {
     return (
-        <AppLayout breadcrumbs={breadcrumbs}>
+        <AppLayoutNoBreadcrumbs>
             <Head title="Product Catalog" />
             <div className="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
-                <ProductList />
+                <ProductList breadcrumbs={breadcrumbs} />
             </div>
-        </AppLayout>
+        </AppLayoutNoBreadcrumbs>
     );
 }
