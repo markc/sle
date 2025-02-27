@@ -32,7 +32,9 @@ const ProductList = () => {
 
   return (
     <div className="p-5">
-      <h1 className="text-2xl font-bold mb-6">Product Catalog</h1>
+      <div className="flex justify-end">
+        <h1 className="text-2xl font-bold mb-6">Product Catalog</h1>
+      </div>
       
       <div className="flex flex-wrap gap-5 mb-8 p-4 bg-gray-50 dark:bg-[oklch(0.205_0_0)] rounded-lg">
         <div className="flex items-center">
