@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
+//import { SidebarHeader } from "@/components/ui/sidebar-header"
 import {
   Sheet,
   SheetContent,
@@ -386,17 +387,6 @@ function SidebarInput({
   )
 }
 
-function SidebarHeader({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="sidebar-header"
-      data-sidebar="header"
-      className={cn("flex flex-col gap-2 p-2", className)}
-      {...props}
-    />
-  )
-}
-
 function SidebarFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -767,7 +757,7 @@ export {
   SidebarGroupAction,
   SidebarGroupContent,
   SidebarGroupLabel,
-  SidebarHeader,
+  //SidebarHeader,
   SidebarInput,
   SidebarInset,
   SidebarMenu,

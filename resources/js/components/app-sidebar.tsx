@@ -1,7 +1,7 @@
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
-import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
+import { Sidebar, SidebarContent, SidebarFooter, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
 import { BookOpen, Folder, LayoutGrid } from 'lucide-react';
@@ -42,16 +42,6 @@ export function AppSidebar({ side = 'left' }: AppSidebarProps) {
     if (side === 'right') {
         return (
             <Sidebar collapsible="icon" variant="inset" side={side}>
-                <SidebarHeader>
-                    <SidebarMenu>
-                        <SidebarMenuItem>
-                            <SidebarMenuButton size="lg">
-                                Right Sidebar
-                            </SidebarMenuButton>
-                        </SidebarMenuItem>
-                    </SidebarMenu>
-                </SidebarHeader>
-
                 <SidebarContent>
                     <div className="p-4">
                         <h3 className="text-lg font-medium">Right Sidebar Content</h3>
@@ -71,18 +61,6 @@ export function AppSidebar({ side = 'left' }: AppSidebarProps) {
     // Left sidebar (default)
     return (
         <Sidebar collapsible="icon" variant="inset" side={side}>
-            <SidebarHeader>
-                <SidebarMenu>
-                    <SidebarMenuItem>
-                        <SidebarMenuButton size="lg" asChild>
-                            <Link href="/dashboard" prefetch>
-                                <AppLogo />
-                            </Link>
-                        </SidebarMenuButton>
-                    </SidebarMenuItem>
-                </SidebarMenu>
-            </SidebarHeader>
-
             <SidebarContent>
                 <NavMain items={mainNavItems} />
             </SidebarContent>
