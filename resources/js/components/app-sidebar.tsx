@@ -38,6 +38,37 @@ interface AppSidebarProps {
 }
 
 export function AppSidebar({ side = 'left' }: AppSidebarProps) {
+    // Different content for left and right sidebars
+    if (side === 'right') {
+        return (
+            <Sidebar collapsible="icon" variant="inset" side={side}>
+                <SidebarHeader>
+                    <SidebarMenu>
+                        <SidebarMenuItem>
+                            <SidebarMenuButton size="lg">
+                                Right Sidebar
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+                    </SidebarMenu>
+                </SidebarHeader>
+
+                <SidebarContent>
+                    <div className="p-4">
+                        <h3 className="text-lg font-medium">Right Sidebar Content</h3>
+                        <p className="mt-2 text-sm">This is the right sidebar content area.</p>
+                    </div>
+                </SidebarContent>
+
+                <SidebarFooter>
+                    <div className="p-4">
+                        <p className="text-sm">Right sidebar footer</p>
+                    </div>
+                </SidebarFooter>
+            </Sidebar>
+        );
+    }
+
+    // Left sidebar (default)
     return (
         <Sidebar collapsible="icon" variant="inset" side={side}>
             <SidebarHeader>

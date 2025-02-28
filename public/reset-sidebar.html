@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Sidebar State</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans max-w-xl mx-auto p-8">
+    <h1 class="text-2xl font-bold text-gray-900 mb-4">Reset Sidebar State</h1>
+    
+    <div class="bg-gray-50 rounded-lg p-6 shadow-sm mb-8">
+        <p class="mb-4">This page will reset the sidebar state to ensure both left and right sidebars are visible.</p>
+        <p class="mb-6">Click the button below to reset the sidebar state, then return to your application.</p>
+        
+        <button id="resetButton" class="bg-indigo-600 text-white px-6 py-3 rounded-md font-medium hover:bg-indigo-700 transition-colors">
+            Reset Sidebar State
+        </button>
+        
+        <p id="successMessage" class="text-green-600 font-bold mt-4 hidden">
+            Sidebar state has been reset! Both sidebars should now be visible.
+            <br>
+            Please return to your application and refresh the page.
+        </p>
+    </div>
+    
+    <script>
+        document.getElementById('resetButton').addEventListener('click', function() {
+            // Reset sidebar state
+            document.cookie = "sidebar_left=true; path=/; max-age=604800";
+            document.cookie = "sidebar_right=true; path=/; max-age=604800";
+            localStorage.setItem('sidebar_left', 'true');
+            localStorage.setItem('sidebar_right', 'true');
+            
+            // Show success message
+            document.getElementById('successMessage').classList.remove('hidden');
+            
+            // Disable button
+            this.disabled = true;
+            this.classList.add('opacity-50', 'cursor-not-allowed');
+            this.textContent = 'Sidebar State Reset';
+        });
+    </script>
+</body>
+</html>

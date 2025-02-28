@@ -8,11 +8,11 @@ import { Breadcrumbs } from '@/components/breadcrumbs';
 export default function AppSidebarsLayout({ children, breadcrumbs = [] }: { children: React.ReactNode; breadcrumbs?: BreadcrumbItem[] }) {
     return (
         <AppShell variant="sidebars">
-            <div className="flex justify-between w-full bg-background z-10 border-b border-sidebar-border/50">
+            <div className="fixed top-0 left-0 right-0 flex justify-between w-full bg-blue z-999 border-red-700 border-b border-sidebar-border/50">
                 <AppSidebarHeader side="left" />
                 <AppSidebarHeader side="right" />
             </div>
-            <div className="flex flex-1 w-full">
+            <div className="flex flex-1 w-full mt-12"> {/* Add top margin to account for fixed header */}
                 <AppSidebar side="left" />
                 <AppContent variant="sidebars">
                     <Breadcrumbs breadcrumbs={breadcrumbs} />

@@ -8,6 +8,12 @@ Route::get('/', function ()
     return Inertia::render('welcome');
 })->name('home');
 
+// Test route for debugging sidebar
+Route::get('/test-sidebar', function ()
+{
+    return Inertia::render('test-sidebar');
+})->name('test.sidebar');
+
 Route::middleware(['auth', 'verified'])->group(function ()
 {
     Route::get('dashboard', function ()
